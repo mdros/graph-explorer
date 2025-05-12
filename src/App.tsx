@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ForceGraph3D, { type NodeObject } from "react-force-graph-3d";
-import NodeData from "./NodeData";
+import NodeData from "./components/NodeData";
 import dataset from "./assets/large_dataset.json";
 
 type NodeContent = {
@@ -12,11 +12,13 @@ type NodeContent = {
 function App() {
 	const [currentNode, setCurrentNode] = useState<NodeContent | null>(null);
 
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	// biome-ignore lint/suspicious/noExplicitAny: tralala
 	const fgRef = useRef<any | null>(null);
 
-	const handleClick = useCallback((node: NodeObject) => {
+	const handleClick = (node: NodeObject) => {
+		console.log("handling click");
 		if (!fgRef || !node.x || !node.y || !node.z) {
+			console.log(node);
 			setCurrentNode(null);
 			return;
 		}
@@ -36,7 +38,7 @@ function App() {
 		console.log("foundNode", foundNode);
 		if (node) setCurrentNode(foundNode);
 		else console.log("Node not found");
-	}, []);
+	};
 
 	useEffect(() => {
 		console.log("currentNode", currentNode);
