@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://schema.org/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:nodeID="N3734957e6120423d93fbafdfa79942d7">
+    <rdf:type rdf:resource="http://schema.org/PostalAddress"/>
+    <ns1:addressLocality>Plainsboro Township</ns1:addressLocality>
+    <ns1:addressRegion>NJ</ns1:addressRegion>
+    <ns1:postalCode>08536</ns1:postalCode>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/jonathan-house">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>House</ns1:familyName>
+    <ns1:givenName>Jonathan</ns1:givenName>
+    <ns1:jobTitle>Marine pilot</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/blythe-house"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:spouse rdf:resource="https://housemd.rdf-ext.org/person/blythe-house"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1942</ns1:birthDate>
+    <ns1:children rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/usa">
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <ns1:identifier>US</ns1:identifier>
+    <ns1:name>United States of America</ns1:name>
+    <ns1:alternateName>USA</ns1:alternateName>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nefb7fc6387d942998277c5b13fc9cc58">
+    <rdf:type rdf:resource="http://schema.org/PostalAddress"/>
+    <ns1:addressLocality>Baltimore</ns1:addressLocality>
+    <ns1:addressRegion>MD</ns1:addressRegion>
+    <ns1:postalCode>21205</ns1:postalCode>
+    <ns1:streetAddress>733 N Broadway</ns1:streetAddress>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/james-wilson">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>Wilson</ns1:familyName>
+    <ns1:givenName>James</ns1:givenName>
+    <ns1:jobTitle>Oncologist</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/eric-foreman"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/lisa-cuddy"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/blythe-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/jonathan-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/dominika-house"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:workLocation rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1969-02-28</ns1:birthDate>
+    <ns1:additionalName>Evan</ns1:additionalName>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/ukraine">
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <ns1:identifier>UA</ns1:identifier>
+    <ns1:name>Ukraine</ns1:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/">
+    <rdf:type rdf:resource="http://schema.org/CreativeWork"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/ukraine"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/johns-hopkins-school-of-medicine"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/221b-baker-street"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/australia"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/blythe-house">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>House</ns1:familyName>
+    <ns1:givenName>Blythe</ns1:givenName>
+    <ns1:jobTitle>Housewife</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/jonathan-house"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:spouse rdf:resource="https://housemd.rdf-ext.org/person/jonathan-house"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1938</ns1:birthDate>
+    <ns1:children rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/eric-foreman">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>Foreman</ns1:familyName>
+    <ns1:givenName>Eric</ns1:givenName>
+    <ns1:jobTitle>Neurologist</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/james-wilson"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/lisa-cuddy"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:workLocation rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+    <ns1:alumniOf rdf:resource="https://housemd.rdf-ext.org/place/johns-hopkins-school-of-medicine"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N77af45db63fd49589ebc979bcb6608a7">
+    <rdf:type rdf:resource="http://schema.org/PostalAddress"/>
+    <ns1:addressLocality>Plainsboro Township</ns1:addressLocality>
+    <ns1:addressRegion>NJ</ns1:addressRegion>
+    <ns1:postalCode>08536</ns1:postalCode>
+    <ns1:streetAddress>221B Baker Street</ns1:streetAddress>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/gregory-house">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>House</ns1:familyName>
+    <ns1:givenName>Gregory</ns1:givenName>
+    <ns1:jobTitle>Head of Diagnostic Medicine</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/eric-foreman"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/james-wilson"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/lisa-cuddy"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/blythe-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/jonathan-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/dominika-house"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:spouse rdf:resource="https://housemd.rdf-ext.org/person/dominika-house"/>
+    <ns1:workLocation rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1959-05-15</ns1:birthDate>
+    <ns1:homeLocation rdf:resource="https://housemd.rdf-ext.org/place/221b-baker-street"/>
+    <ns1:parent rdf:resource="https://housemd.rdf-ext.org/person/blythe-house"/>
+    <ns1:parent rdf:resource="https://housemd.rdf-ext.org/person/jonathan-house"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/dominika-house">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>House</ns1:familyName>
+    <ns1:givenName>Dominika</ns1:givenName>
+    <ns1:jobTitle>Massage Therapist</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/ukraine"/>
+    <ns1:spouse rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1983-06-13</ns1:birthDate>
+    <ns1:additionalName>Ann</ns1:additionalName>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/allison-cameron">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>Cameron</ns1:familyName>
+    <ns1:givenName>Allison</ns1:givenName>
+    <ns1:jobTitle>Immunologist</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/eric-foreman"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/james-wilson"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/lisa-cuddy"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:spouse rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:workLocation rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/221b-baker-street">
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <ns1:address rdf:nodeID="N77af45db63fd49589ebc979bcb6608a7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/robert-chase">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>Chase</ns1:familyName>
+    <ns1:givenName>Robert</ns1:givenName>
+    <ns1:jobTitle>Surgeon</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/eric-foreman"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/james-wilson"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/australia"/>
+    <ns1:spouse rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:workLocation rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1979-02-12</ns1:birthDate>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/lisa-cuddy">
+    <rdf:type rdf:resource="http://schema.org/Person"/>
+    <ns1:familyName>Cuddy</ns1:familyName>
+    <ns1:givenName>Lisa</ns1:givenName>
+    <ns1:jobTitle>Dean of Medicine</ns1:jobTitle>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/eric-foreman"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/james-wilson"/>
+    <ns1:knows rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:nationality rdf:resource="https://housemd.rdf-ext.org/place/usa"/>
+    <ns1:workLocation rdf:resource="https://housemd.rdf-ext.org/place/princeton-plainsboro"/>
+    <ns1:birthDate rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1968</ns1:birthDate>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/person/">
+    <rdf:type rdf:resource="http://schema.org/CreativeWork"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/allison-cameron"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/eric-foreman"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/gregory-house"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/james-wilson"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/lisa-cuddy"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/robert-chase"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/blythe-house"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/jonathan-house"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/dominika-house"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/australia">
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <ns1:identifier>AU</ns1:identifier>
+    <ns1:name>Australia</ns1:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/johns-hopkins-school-of-medicine">
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <ns1:address rdf:nodeID="Nefb7fc6387d942998277c5b13fc9cc58"/>
+    <ns1:name>Johns Hopkins School of Medicine</ns1:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/">
+    <rdf:type rdf:resource="http://schema.org/CreativeWork"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/person/"/>
+    <ns1:hasPart rdf:resource="https://housemd.rdf-ext.org/place/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://housemd.rdf-ext.org/place/princeton-plainsboro">
+    <rdf:type rdf:resource="http://schema.org/Place"/>
+    <ns1:address rdf:nodeID="N3734957e6120423d93fbafdfa79942d7"/>
+    <ns1:name>Princeton-Plainsboro Teaching Hospital</ns1:name>
+  </rdf:Description>
+</rdf:RDF>

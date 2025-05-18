@@ -1,10 +1,6 @@
-interface Props {
-	id: string;
-	title: string;
-	description: string;
-}
+import type { Node } from "../types";
 
-const NodeData = ({ id, title, description }: Props) => {
+const NodeData = ({ id, properties }: Node) => {
 	return (
 		<div
 			style={{
@@ -18,8 +14,13 @@ const NodeData = ({ id, title, description }: Props) => {
 			}}
 		>
 			<h3>{id}</h3>
-			<h2>{title}</h2>
-			<p>{description}</p>
+			<p>
+				{properties.map((p) => (
+					<p key={p.id}>
+						{p.id} - {p.propertyType} - {p.value}
+					</p>
+				))}
+			</p>
 		</div>
 	);
 };

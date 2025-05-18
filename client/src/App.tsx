@@ -1,61 +1,44 @@
-import { useEffect, useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import ForceGraph3D, { type NodeObject } from "react-force-graph-3d";
 import NodeData from "./components/NodeData";
-import dataset from "./assets/large_dataset.json";
-
-type NodeContent = {
-	id: string;
-	user: string;
-	description: string;
-};
+import useCameraUtils from "./hooks/useCameraUtils";
+import type { GetNodesResponse, Node } from "./types";
 
 function App() {
-	const [currentNode, setCurrentNode] = useState<NodeContent | null>(null);
+	const [currentNode, setCurrentNode] = useState<Node | null>(null);
 
-	// biome-ignore lint/suspicious/noExplicitAny: tralala
-	const fgRef = useRef<any | null>(null);
+	const { fgRef, focusOnNode } = useCameraUtils();
+
+	const { data } = useQuery<GetNodesResponse>({
+		queryKey: ["nodes"],
+		queryFn: () => fetch("http://127.0.0.1:8000/nodes/").then((res) => res.json()),
+	});
 
 	const handleClick = (node: NodeObject) => {
-		console.log("handling click");
-		if (!fgRef || !node.x || !node.y || !node.z) {
-			console.log(node);
-			setCurrentNode(null);
-			return;
+		if (!data) return;
+		console.log(node);
+		const foundNode = data.nodes.find((n) => n.id === node.id);
+		if (foundNode) {
+			setCurrentNode(foundNode);
+			focusOnNode(node);
 		}
-		console.log("handling click");
-		const distance = 80;
-		const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-
-		fgRef.current?.cameraPosition(
-			{ x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
-			{ x: node.x, y: node.y, z: node.z },
-			1000,
-		);
-
-		const foundNode = dataset.nodes.find(
-			(n) => n.id === node.id,
-		) as NodeContent;
-		console.log("foundNode", foundNode);
-		if (node) setCurrentNode(foundNode);
-		else console.log("Node not found");
 	};
-
-	useEffect(() => {
-		console.log("currentNode", currentNode);
-	}, [currentNode]);
 
 	return (
 		<>
-			<ForceGraph3D
-				ref={fgRef}
-				controlType="orbit"
-				graphData={dataset}
-				warmupTicks={200}
-				cooldownTicks={0}
-				onNodeClick={handleClick}
-				onBackgroundClick={() => setCurrentNode(null)}
-				nodeLabel={"id"}
-			/>
+			{data ? (
+				<ForceGraph3D
+					ref={fgRef}
+					controlType="orbit"
+					graphData={{ nodes: data.nodes, links: data.links }}
+					warmupTicks={200}
+					cooldownTicks={0}
+					onNodeClick={handleClick}
+					onBackgroundClick={() => setCurrentNode(null)}
+					nodeLabel={"id"}
+				/>
+			) : null}
 
 			{currentNode ? (
 				<div
@@ -74,11 +57,7 @@ function App() {
 						margin: "50px",
 					}}
 				>
-					<NodeData
-						id={currentNode.id}
-						title={currentNode.user}
-						description={currentNode.description}
-					/>
+					<NodeData {...currentNode} />
 				</div>
 			) : null}
 		</>
