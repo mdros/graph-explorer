@@ -5,16 +5,14 @@ const useCameraUtils = () => {
 	// biome-ignore lint/suspicious/noExplicitAny:
 	const fgRef = useRef<any | null>(null);
 
-	const focusOnNode = (node: NodeObject, distance = 80) => {
-		if (!fgRef.current || !node.x || !node.y || !node.z) {
+	const focusOnNode = (node: NodeObject, distance = 50) => {
+		if (!fgRef.current || node.x === undefined || node.y === undefined || node.z === undefined) {
 			console.warn("Invalid node or ForceGraph reference");
 			return;
 		}
 
-		const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
-
 		fgRef.current.cameraPosition(
-			{ x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+			{ x: node.x + distance, y: node.y + distance, z: node.z + distance },
 			{ x: node.x, y: node.y, z: node.z },
 			200,
 		);

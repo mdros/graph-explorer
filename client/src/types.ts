@@ -1,21 +1,34 @@
 export type Property = {
 	id: string;
 	namespace: string;
-	propertyType: "URIRef" | "Literal";
-	value: string;
+	predicate: string;
 };
 
 export type Node = {
 	id: string;
-	properties: Property[];
+	details: {
+		properties: Property[];
+		links: Link[];
+	};
+};
+
+export type GetNodesResponse = {
+	nodes: Node[];
+	total: number;
+};
+
+export type GetRelatedNodesResponse = {
+	nodes: Omit<Node, "details">[];
+	total: number;
 };
 
 export type Link = {
 	source: string;
 	target: string;
+	predicate: string;
 };
 
-export type GetNodesResponse = {
-	nodes: Node[];
-	links: Link[];
-};
+// export type GetNodesResponse = {
+// 	nodes: Node[];
+// 	links: Link[];
+// };

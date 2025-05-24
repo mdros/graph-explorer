@@ -1,6 +1,16 @@
-import type { Node } from "../types";
+import { useQuery } from "@tanstack/react-query";
+import type { Property } from "../types";
 
-const NodeData = ({ id, properties }: Node) => {
+type Props = {
+	nodeId: string;
+};
+
+const NodeData = ({ nodeId }: Props) => {
+	const { data } = useQuery({
+		queryKey: ["nodeData", nodeId],
+		queryFn: () => fetch(`http://127.0.0.1:8000/node?uri=${encodeURIComponent(nodeId)}`).then((res) => res.json()),
+	});
+
 	return (
 		<div
 			style={{
@@ -13,14 +23,21 @@ const NodeData = ({ id, properties }: Node) => {
 				color: "black",
 			}}
 		>
-			<h3>{id}</h3>
-			<p>
-				{properties.map((p) => (
-					<p key={p.id}>
-						{p.id} - {p.propertyType} - {p.value}
-					</p>
-				))}
-			</p>
+			<h3>{nodeId}</h3>
+			<div>
+				{data ? (
+					<>
+						<h4>Properties</h4>
+						<ul>
+							{data.details.properties.map((property: Property) => (
+								<li key={property.id}>
+									{property.predicate}: {property.id}
+								</li>
+							))}
+						</ul>
+					</>
+				) : null}
+			</div>
 		</div>
 	);
 };

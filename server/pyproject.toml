@@ -5,12 +5,22 @@ description = ""
 authors = [{ name = "Michał", email = "michal.dros01@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.12,<4.0.0"
-dependencies = ["rdflib (>=7.1.4,<8.0.0)", "fastapi[standard] (>=0.115.12,<0.116.0)", "pydantic (>=2.11.4,<3.0.0)", "uvicorn (>=0.34.2,<0.35.0)"]
+dependencies = [
+    "rdflib (>=7.1.4,<8.0.0)",
+    "fastapi[standard] (>=0.115.12,<0.116.0)",
+    "pydantic (>=2.11.4,<3.0.0)",
+    "uvicorn (>=0.34.2,<0.35.0)",
+]
 
 
 [tool.poetry]
 package-mode = false
 
+[tool.pyright]
+include = ["app"]
+exclude = [".venv", "**/__pycache__"]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
