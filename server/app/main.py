@@ -1,15 +1,15 @@
 from typing import Annotated
 from urllib.parse import unquote
 
+from app.graph import get_all_nodes, get_neighbour_nodes, get_nodes_by_ids, get_single_node
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-
-from app.graph import get_all_nodes, get_neighbour_nodes, get_nodes_by_ids, get_single_node
 
 app = FastAPI()
 
 origins = [
     "http://localhost:5173",
+    "http://localhost:4173",
 ]
 app.add_middleware(
     CORSMiddleware,

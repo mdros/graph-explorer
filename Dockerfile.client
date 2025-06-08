@@ -1,0 +1,25 @@
+FROM node:24-alpine AS builder
+
+RUN npm install -g pnpm
+
+WORKDIR /app
+
+COPY client/pnpm-lock.yaml client/package.json ./
+RUN pnpm install
+
+COPY client .
+RUN pnpm build
+
+FROM node:24-alpine
+
+RUN npm install -g pnpm
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+EXPOSE 4173
+
+CMD ["pnpm", "exec", "vite", "preview", "--host"]
