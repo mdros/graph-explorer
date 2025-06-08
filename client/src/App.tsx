@@ -1,55 +1,53 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import uniqBy from "lodash.uniqby";
+import { useEffect, useState } from "react";
 import ForceGraph3D, { type NodeObject } from "react-force-graph-3d";
 import NodeData from "./components/NodeData";
 import useCameraUtils from "./hooks/useCameraUtils";
-import type { GetNodesResponse } from "./types";
+import type { GraphData } from "./types";
 import { fetchRelatedNodes } from "./utils";
 
 function App() {
 	const { fgRef } = useCameraUtils();
 	const [currentNodeId, setCurrentNodeId] = useState<string | null>(null);
 
-	const [graphData, setGraphData] = useState<{ nodes: { id: string }[]; links: { source: string; target: string; predicate: string }[] }>({
+	const [graphData, setGraphData] = useState<GraphData>({
 		nodes: [{ id: "https://housemd.rdf-ext.org/person/gregory-house" }],
 		links: [],
 	});
+	const [expandedNodeIds, setExpandedNodeIds] = useState<string[]>([]);
 
-	const { data } = useQuery<GetNodesResponse>({
-		queryKey: ["nodes", graphData.nodes.map((n) => n.id)],
-		queryFn: async () => {
-			const res = await fetch(
-				`http://127.0.0.1:8000/nodes?uris=${graphData.nodes
-					.map((n) => n.id)
-					.map(encodeURIComponent)
-					.join("&uris=")}`,
-			);
-			return await res.json();
-		},
-	});
+	useEffect(() => {
+		const nodeIds = graphData.nodes.map((n) => n.id);
+		const duplicates = nodeIds.filter((id, idx) => nodeIds.indexOf(id) !== idx);
+		if (duplicates.length > 0) {
+			console.log("Duplicated node ids:", [...new Set(duplicates)]);
+		}
+	}, [graphData]);
 
 	const expandNode = async (nodeId: string) => {
-		const relatedNodes = await fetchRelatedNodes(nodeId);
-		const node = data?.nodes.find((n) => n.id === nodeId);
-		if (!node) return;
-		const newLinks = node.details.links;
+		const [node, relatedNodes] = await fetchRelatedNodes(nodeId);
+		if (!node || expandedNodeIds.includes(nodeId)) return;
 
-		setGraphData((prevData) => ({
-			nodes: [
-				...prevData.nodes,
-				...relatedNodes.filter((n) => !prevData.nodes.some((existingNode) => existingNode.id === n.id)).map((n) => ({ id: n.id })),
-			],
-			links: [
-				...prevData.links,
-				...newLinks.filter(
-					(link) =>
-						!prevData.links.some(
-							(existingLink) =>
-								existingLink.source === link.source && existingLink.target === link.target && existingLink.predicate === link.predicate,
-						),
-				),
-			],
-		}));
+		setGraphData((prevData) => {
+			const newNodes = [...prevData.nodes, ...relatedNodes.map((n) => ({ id: n.id }))];
+			// Remove duplicates by id
+			const uniqueNodes = uniqBy(newNodes, "id");
+
+			return {
+				nodes: uniqueNodes,
+				links: [
+					...prevData.links,
+					...node.details.links.filter(
+						(link) =>
+							!prevData.links.some(
+								(existingLink) =>
+									existingLink.source === link.source && existingLink.target === link.target && existingLink.predicate === link.predicate,
+							),
+					),
+				],
+			};
+		});
+		setExpandedNodeIds((prev) => [...prev, nodeId]);
 	};
 
 	const handleNodeClick = (node: NodeObject) => {
@@ -68,6 +66,10 @@ function App() {
 				onBackgroundClick={() => setCurrentNodeId(null)}
 				nodeLabel={"id"}
 				linkLabel={"predicate"}
+				linkDirectionalParticles={1}
+				linkDirectionalArrowLength={2}
+				enableNodeDrag={false}
+				nodeColor={(node) => (expandedNodeIds.includes(node.id) ? "green" : "red")}
 			/>
 
 			{currentNodeId ? (

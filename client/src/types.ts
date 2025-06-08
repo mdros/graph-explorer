@@ -18,8 +18,8 @@ export type GetNodesResponse = {
 };
 
 export type GetRelatedNodesResponse = {
-	nodes: Omit<Node, "details">[];
-	total: number;
+	node: Node;
+	relatedNodes: Node[];
 };
 
 export type Link = {
@@ -28,7 +28,7 @@ export type Link = {
 	predicate: string;
 };
 
-// export type GetNodesResponse = {
-// 	nodes: Node[];
-// 	links: Link[];
-// };
+export type GraphData = {
+	nodes: { id: string }[];
+	links: Link[];
+}
