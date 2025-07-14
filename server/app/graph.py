@@ -1,13 +1,10 @@
 from typing import Literal, TypedDict
 
-from rdflib import Graph, Namespace, URIRef
+from rdflib import Graph, URIRef
 from rdflib.namespace import split_uri
 
 graph = Graph()
-graph.parse("housemd.rdf")
-
-ns = Namespace("http://schema.org/")
-house_ns = Namespace("https://housemd.rdf-ext.org/")
+graph.parse("starwars.ttl")
 
 
 class Property(TypedDict):
@@ -38,11 +35,6 @@ class NodeWithoutDetails(TypedDict):
 
 NodeType = Literal["person", "place"]
 
-node_type_to_rdf_type: dict[NodeType, URIRef] = {
-    "person": ns.Person,
-    "place": ns.Place,
-}
-
 
 def _get_node_details(node_id: str) -> NodeDetails:
     details: NodeDetails = {
@@ -52,22 +44,24 @@ def _get_node_details(node_id: str) -> NodeDetails:
 
     for predicate, obj in graph.predicate_objects(subject=URIRef(node_id), unique=True):
         namespace, property = split_uri(str(predicate))
-        if isinstance(obj, URIRef) and str(obj) not in ["http://schema.org/Person"]:
-            details["links"].append(
-                {
-                    "source": node_id,
-                    "target": str(obj),
-                    "predicate": property,
-                }
-            )
+        if isinstance(obj, URIRef):
+            link: Link = {
+                "source": node_id,
+                "target": str(obj),
+                "predicate": property,
+            }
+            if link not in details["links"]:
+                details["links"].append(link)
         else:
-            details["properties"].append(
-                {
+            if not hasattr(obj, "language") or obj.language is None or obj.language == "en":  # type: ignore
+                prop: Property = {
                     "id": str(obj),
                     "namespace": namespace,
                     "predicate": property,
                 }
-            )
+                if prop not in details["properties"]:
+                    details["properties"].append(prop)
+
     return details
 
 
