@@ -16,11 +16,9 @@ const NodeData = ({ nodeId }: Props) => {
 			style={{
 				display: "flex",
 				flexDirection: "column",
-				justifyContent: "center",
-				width: "100%",
-				height: "100%",
-				padding: "16px",
+				overflowY: "auto",
 				color: "black",
+				padding: "10px",
 			}}
 		>
 			<h3>{nodeId}</h3>
@@ -30,9 +28,10 @@ const NodeData = ({ nodeId }: Props) => {
 						<h4>Properties</h4>
 						<ul>
 							{data.details.properties.map((property: Property) => (
-								<li key={property.id}>
-									{property.predicate}: {property.id}
-								</li>
+								<div key={property.id} style={{ display: "flex", flexDirection: "column", marginBottom: "8px" }}>
+									<span style={{ fontWeight: "bold" }}>{property.predicate}</span>
+									<span>{property.id}</span>
+								</div>
 							))}
 						</ul>
 					</>

@@ -57,7 +57,7 @@ export default function Graph() {
 	};
 
 	return (
-		<>
+		<div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
 			<ForceGraph3D
 				ref={fgRef}
 				controlType="orbit"
@@ -75,23 +75,20 @@ export default function Graph() {
 			{currentNodeId ? (
 				<div
 					style={{
-						overflow: "auto",
 						position: "absolute",
 						top: 0,
 						right: 0,
 						width: "30vw",
-						height: "90vh",
+						height: "100vh",
 						backgroundColor: "white",
 						zIndex: 1,
 						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						margin: "50px",
+						flexDirection: "column",
 					}}
 				>
 					<NodeData nodeId={currentNodeId} />
 				</div>
 			) : null}
-		</>
+		</div>
 	);
 }
